@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>asktechnopark</Name>
+    <RootNamespace>AskTechnoparkVS15</RootNamespace>
+    <InterpreterId>{f1813dd5-0dd7-419d-81ff-a4b135fea427}</InterpreterId>
+    <InterpreterVersion>3.4</InterpreterVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f2cc1b0d-e94d-4dcd-bd41-c10047b66f70</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="asktechnopark\api\decorators.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="asktechnopark\api\response.py" />
+    <Compile Include="asktechnopark\api\urls.py" />
+    <Compile Include="asktechnopark\api\user\views.py" />
+    <Compile Include="asktechnopark\api\user\__init__.py" />
+    <Compile Include="asktechnopark\api\views.py" />
+    <Compile Include="asktechnopark\api\__init__.py" />
+    <Compile Include="asktechnopark\management\__init__.py" />
+    <Compile Include="asktechnopark\utils\rand.py" />
+    <Compile Include="asktechnopark\utils\__init__.py" />
+    <Compile Include="blog\forms.py" />
+    <Compile Include="blog\models.py" />
+    <Compile Include="blog\tests.py" />
+    <Compile Include="blog\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="blog\views.py" />
+    <Compile Include="blog\__init__.py" />
+    <Compile Include="asktechnopark\settings.py" />
+    <Compile Include="asktechnopark\urls.py" />
+    <Compile Include="asktechnopark\wsgi.py" />
+    <Compile Include="asktechnopark\__init__.py" />
+    <Compile Include="manage.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="asktechnopark\api\" />
+    <Folder Include="asktechnopark\api\user\" />
+    <Folder Include="asktechnopark\management\" />
+    <Folder Include="asktechnopark\utils\" />
+    <Folder Include="blog\" />
+    <Folder Include="blog\static\" />
+    <Folder Include="blog\static\blog\" />
+    <Folder Include="blog\static\blog\content\" />
+    <Folder Include="blog\static\blog\fonts\" />
+    <Folder Include="blog\static\blog\scripts\" />
+    <Folder Include="blog\templates\" />
+    <Folder Include="asktechnopark\" />
+    <Folder Include="asktechnopark\static\" />
+    <Folder Include="asktechnopark\static\css\" />
+    <Folder Include="asktechnopark\static\js\" />
+    <Folder Include="asktechnopark\templates\" />
+    <Folder Include="asktechnopark\__pycache__\" />
+    <Folder Include="blog\templates\blog\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asktechnopark\static\css\bootstrap.min.css" />
+    <Content Include="asktechnopark\static\css\styles.css" />
+    <Content Include="asktechnopark\static\js\bootstrap.min.js" />
+    <Content Include="asktechnopark\templates\index.html" />
+    <Content Include="asktechnopark\utils\security.py" />
+    <Content Include="asktechnopark\__pycache__\settings.cpython-34.pyc" />
+    <Content Include="asktechnopark\__pycache__\__init__.cpython-34.pyc" />
+    <Content Include="blog\static\blog\content\bootstrap.css" />
+    <Content Include="blog\static\blog\content\bootstrap.min.css" />
+    <Content Include="blog\static\blog\content\site.css" />
+    <Content Include="blog\static\blog\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="blog\static\blog\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="blog\static\blog\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="blog\static\blog\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="blog\static\blog\scripts\_references.js" />
+    <Content Include="blog\static\blog\scripts\bootstrap.js" />
+    <Content Include="blog\static\blog\scripts\bootstrap.min.js" />
+    <None Include="blog\static\blog\scripts\jquery.validate-vsdoc.js" />
+    <None Include="blog\static\blog\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="blog\static\blog\scripts\jquery-1.10.2.js" />
+    <Content Include="blog\static\blog\scripts\jquery-1.10.2.min.js" />
+    <Content Include="blog\static\blog\scripts\jquery-1.10.2.min.map" />
+    <Content Include="blog\static\blog\scripts\jquery.validate.js" />
+    <Content Include="blog\static\blog\scripts\jquery.validate.min.js" />
+    <Content Include="blog\static\blog\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="blog\static\blog\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="blog\static\blog\scripts\modernizr-2.6.2.js" />
+    <Content Include="blog\static\blog\scripts\respond.js" />
+    <Content Include="blog\static\blog\scripts\respond.min.js" />
+    <Content Include="blog\templates\blog\index.html" />
+    <Content Include="blog\templates\blog\layout.html" />
+    <Content Include="blog\templates\blog\login.html" />
+    <Content Include="blog\templates\blog\loginpartial.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.mht">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{07a7114b-8da5-412b-ab91-80b164e9a517}\3.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="VSEnv\">
+      <Id>{f1813dd5-0dd7-419d-81ff-a4b135fea427}</Id>
+      <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
+      <Version>3.4</Version>
+      <Description>VSEnv (Python 3.4)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
