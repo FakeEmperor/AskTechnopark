@@ -1,0 +1,410 @@
+@import "compass";
+@import "fonts";
+@import "mixins";
+@import "theme";
+@import "consts";
+
+
+
+/* Special constants: Generic */
+
+/*Special constants: Navigation*/
+$nav_header_bg_color: $flat_palette_valencia;
+$nav_header_menu_btn_bars: $flat_palette_well_red;
+$nav_header_menu_btn_bg: lighten($nav_header_menu_btn_bars,13);
+
+
+$nav_header_height: 50px;
+$nav_header_menu_btn_size: $nav_header_height;
+
+$nav_header_space: $sm_padding_space 0;
+$nav_header_header_color: $default_palette_dark;
+$nav_header_header_size: $h1_small_size;
+
+$nav_header_side_paddings: 3%;
+$nav_header_right_side_padding: 5%;
+$nav_header_right_side_padding_small: 0%;
+
+$nav_sidebar_bg_color: lighten($flat_palette_iron, 14);
+$nav_sidebar_dafault_bg_url: 'http://p1.pichost.me/i/41/1641082.jpg';
+$nav_sidebar_min_width: 300px;
+
+$layout_split_default_percentage: 23%;
+$layout_split_small_percentage: 30%;
+
+$layout_split_sidebar_xs: 65%;
+$layout_split_sidebar_sm: 35%;
+
+$nav_sidebar_min_height: 600px;
+$nav_sidebar_paddings: 0.5%;
+$nav_sidebar_userblock_height: $nav_sidebar_min_height*0.3;
+
+
+/* BODY, HTML and ALL GENERIC CLASSES */
+
+
+html,body {
+  margin: 0;
+  height:100%;
+}
+
+body {
+  font: 12px "PT Sans", Arial, sans-serif;
+  padding-top: $nav_header_height;
+  background-color: lighten($flat_palette_white_smoke,5);
+}
+
+.robotic {
+  font-family: MrRobot, "Nise Sega Cyrillic", "PT Sans", Arial, sans-serif;
+}
+
+.text-light {
+  color: $text_light_color;
+}
+
+.text-dark {
+  color: $text_dark_color;
+}
+
+.text-empathize {
+  font-weight: 600;
+}
+
+
+.hand {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.ellipsize {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.spaced-5 {
+  * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.no-link_light {
+  &:visited {
+    color: $text_light_color;
+  }
+}
+
+/******************************************/
+
+
+a {
+  color: $link_color;
+
+  &:visited {
+    color: $link_visited_color;
+  }
+  &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+}
+
+.wrapper {
+  height: 100%;
+}
+
+/* CUSTOMIZE BTN-TOGGLE*/
+$header_title_color: lighten($nav_header_bg_color,40);
+.header-title {
+  font-size: 1.875em;
+
+  color: $header_title_color;
+  &:visited {
+    color: $header_title_color;
+  }
+
+  &:hover {
+    color: $text_light_color;
+  }
+
+}
+
+.middle-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin middle-container($line-height) {
+  line-height: $line-height;
+}
+
+.middle-container-2 {
+  line-height: 100%;
+}
+
+.middle-container-3 {
+  line-height: 300%;
+}
+
+.middle-container-4 {
+  line-height: 400%;
+}
+
+.left_side {
+  float: left;
+  width: $layout_split_default_percentage;
+}
+
+.right_side {
+  float: right;
+  width: 100%-$layout_split_default_percentage;
+}
+
+.float-container {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+/*header-navbar*/
+
+.top-navbar {
+  background-color: $nav_header_bg_color;
+  margin-bottom: 0;
+  .navbar-header {
+    width: 100%;
+  }
+
+  .header-generic {
+    margin: 0;
+    padding: 0 $nav_header_side_paddings;
+    @extend .float-container;
+    white-space: nowrap;
+    @include middle-container($nav_header_height);
+  }
+
+  .header-left {
+
+  }
+  .header-right {
+    padding: 0 $nav_header_right_side_padding;
+    text-align: center;
+  }
+
+  #page-title {
+    max-width: 100%;
+    color: lighten($header_title_color, 5);
+    font-size: 1.8em;
+  }
+
+  .navbar-toggle {
+
+      border-radius: 0;
+      width: $nav_header_menu_btn_size;
+      height: $nav_header_menu_btn_size;
+      margin: 0 10px 0 0;
+      border: none;
+      padding: 0 $nav_header_menu_btn_size / 4;
+      .icon-bar {
+        width: $nav_header_menu_btn_size / 2;
+        background-color: $nav_header_menu_btn_bars; /* Changes regular toggle color */
+      }
+      &:active {
+        box-shadow: none;
+      }
+      /*Set constant background-color*/
+      &, &:link, &:visited, &:focus {
+        background-color:$nav_header_menu_btn_bg;
+      }
+      &:hover {
+        background-color: darken($nav_header_menu_btn_bg, 20); /* Changes toggle color on hover */
+      }
+  }
+
+}
+
+/**************** PAGE CONTENT: SIDEBAR AND MAIN CONTENT *******************/
+.page-content {
+  .sidebar-offcanvas {
+    position: fixed;
+    overflow-x: hidden;
+    //background-image:url($nav_sidebar_dafault_bg_url);
+    background: $nav_sidebar_bg_color no-repeat fixed top left;
+    background-size:cover;
+    border-radius: 0;
+    max-height: calc(100vh - #{$nav_header_height});
+    overflow-y: auto;
+    height: 100%;
+    min-width: $nav_sidebar_min_width;
+    padding: 0.05*$nav_sidebar_min_width;
+    /*
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition:    all 1s ease-in-out;
+    -o-transition:      all 1s ease-in-out;
+    */
+    transition:         all 0.5s ease-in-out;
+    .sidebar_user {
+      & > * {
+        margin-top: 10px;
+      }
+      .sidebar_userblock {
+        margin-top: 0px;
+        max-height: $nav_sidebar_userblock_height;
+        overflow-y: hidden;
+        .sidebar_userpic {
+          position: relative;
+          height: 0.7*$nav_sidebar_userblock_height;
+          width: 0.7*$nav_sidebar_userblock_height;
+          overflow: hidden;
+          border-radius: 50%;
+          .sidebar_userpic_img {
+
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+          }
+
+        }
+        .sidebar_userinfo {
+          width: 100%;
+          .sidebar_username {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+      }
+      .sidebar_user-stats {
+        background-color: red;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: $text_light_color;
+        a {
+
+        }
+        .badge {
+          background-color: #00A885;
+        }
+      }
+      .sidebar_user-settings {
+
+      }
+      .sidebar_user-ratings {
+        .user-ratings-button {
+          $user-ratings_btn_bg: $flat_palette_fern;
+          $user-ratings_color: $text_light_color;
+          background-color: $user-ratings_btn_bg;
+          border: none;
+          color: $user-ratings_color;
+          &:visited {
+            color: $user-ratings_color !important;
+          }
+
+        }
+        .user-ratings-stat {
+           @extend .user-ratings-button;
+
+        }
+      }
+    }
+
+    .sidebar_tabs {
+      .sidebar_tabs_saved {
+
+      }
+    }
+
+  }
+
+  .sidebar-offcanvas.sidebar-activated {
+      margin-left: 0 !important;
+  }
+
+  .wrapper-main {
+
+    overflow-y: auto;
+    overflow-x: inherit;
+    line-break: auto;
+    word-break: break-all;
+    max-width: calc(100% - #{$nav_sidebar_min_width});
+  }
+}
+
+
+/* MEDIA SM CHANGES */
+@media (max-width: $screen_sm_size) {
+  .top-navbar {
+    #page-title {
+      $page-title-width: 0.8;
+      position: relative;
+      left: $nav_header_right_side_padding - $layout_split_default_percentage / (100% - $layout_split_default_percentage) * 50%;
+    }
+  }
+}
+
+/* MEDIA XS CHANGES */
+
+@media (max-width:$screen_xs_size) {
+  /** TOP NAVBAR **/
+
+  .top-navbar {
+    #page-title {
+      font-size: 1.3em;
+      left: $nav_header_right_side_padding_small  - $layout_split_small_percentage / (100% - $layout_split_small_percentage) * 50%;
+    }
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent; /* Removes border color */
+      float: left; /* Move navbar toggle to left */
+  }
+
+  /** SIDEBAR AND CONTENT WARPING **/
+  .page-content {
+    .sidebar-offcanvas {
+      width: $layout_split_sidebar_xs;
+      margin-left: -$layout_split_sidebar_xs;
+    }
+    .wrapper-main {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  /*************SUPPORT CLASSES**************/
+  //TODO: move to separate class
+
+  .hidden-xxs {
+    display: none;
+  }
+  .col-xxs-reset {
+    width: auto;
+    float: none;
+  }
+
+}
+
+
+
+
+//////TO DEAL WITH MINIMUM SIDEBAR WIDTH IN XS MODE
+@media (max-width: $nav_sidebar_min_width/($layout_split_sidebar_xs/100%) ) {
+  .page-content {
+    .sidebar-offcanvas {
+      width: $nav_sidebar_min_width;
+      margin-left: -$nav_sidebar_min_width;
+
+    }
+
+    .wrapper-main {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+}
+
+

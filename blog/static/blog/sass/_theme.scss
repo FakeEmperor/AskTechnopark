@@ -1,0 +1,39 @@
+@import "palette";
+
+
+$theme_leading_color: $flat_palette_valencia;
+$theme_leading_accent_bleak: lighten($theme_leading_color,13);
+$theme_leading_accent_vivid: $flat_palette_well_red;
+
+$theme_opposite_leading_color: $flat_palette_mariner;
+$theme_opposite_leading_accent_vivid: $flat_palette_picton_blue;
+$theme_opposite_leading_accent_bleak: lighten($theme_leading_color,13);
+
+
+$theme_active_color: lighten($flat_palette_picton_blue, 5);
+$theme_active_color_alt: $flat_palette_sun;
+$theme_active_color_alt2: $flat_palette_persian_green;
+
+$theme_lightest: white;
+$theme_lighter: #F0F0F0;
+$theme_light: #DDD;
+$theme_normal: #555;
+$theme_dark: #333;
+$theme_darker: #222;
+$theme_darkest: black;
+
+
+/************ MAIN COLORING DEFINITIONS *************/
+
+
+
+/*********** BOOTSTRAP OVERRIDE *************/
+$brand-primary: darken($theme_active_color,5);
+$badge-bg: $theme_leading_accent_bleak;
+
+
+$icon-font-path: "../fonts/";
+
+
+//IMPORT BOOTSTRAP
+@import "bootstrap";

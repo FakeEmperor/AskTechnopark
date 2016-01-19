@@ -1,6 +1,8 @@
 """
 Django settings for asktechnopark project.
 """
+from asktechnopark.private_credential_settings import *
+
 
 from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
@@ -18,18 +20,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ask_technopark',
-        'USER': 'ask_admin_db',
-        'PASSWORD': 'arturartur',
-        'HOST': 'db4free.net',
-        'PORT': '3306',
-    }
-}
-
-LOGIN_URL = '/login'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -77,22 +67,24 @@ STATIC_ROOT = path.join(PROJECT_ROOT, 'static').replace('\\', '/')
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-)
+    path.join(PROJECT_ROOT, 'common_static').replace('\\', '/'),
+    path.join(PROJECT_ROOT, 'blog/static').replace('\\', '/')
+
+]
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -111,7 +103,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTH_USER_MODEL = 'blog.models.User'
+
 
 
 ROOT_URLCONF = 'asktechnopark.urls'
@@ -124,10 +116,31 @@ TEMPLATE_DIRS = (
     # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    
 )
+
+
+####### SESSIONS AND AUTH ##########
+
+# OVERRIDES DEFAULT MODEL USER
+LOGIN_URL = 'login'
+
+AUTH_USER_MODEL = 'blog.User'
+
+# default: ['django.contrib.auth.backends.ModelBackend']
+AUTHENTICATION_BACKENDS = ['api.user.auth.AuthBackend']
+
+SESSION_ENGINE = 'api.user.auth'
+
+SESSION_COOKIE_HTTPONLY = True # may change that
+
+######## INSTALLED APPS ###########
 
 USER_APPS = [
     'blog',
+    'api',
+    'asktechnopark',
+    'penguin'
 ]
 
 
@@ -145,6 +158,12 @@ VENDOR_APPS = [
 ]
 
 INSTALLED_APPS = USER_APPS + VENDOR_APPS
+
+
+
+
+######### LOGGING #######
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

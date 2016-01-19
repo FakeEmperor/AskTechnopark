@@ -1,0 +1,28 @@
+@import "palette";
+
+
+
+/*Functional color constants*/
+$link_color: $flat_palette_picton_blue;
+$link_visited_color: $flat_palette_curious_blue;
+
+$text_dark_color: $default_palette_dark;
+$text_light_color: $default_palette_white;
+
+
+/*Spaces and padding*/
+$md_padding_space: 20px;
+$sm_padding_space: $md_padding_space / 2;
+
+
+/*Font sizes*/
+$h1_small_size: 1.875em;
+
+$fluid_text_size_std: 0.9em;
+$fluid_text_size_md: 1.2*$fluid_text_size_std;
+
+
+/* SCREEN SIZES */
+$screen_md_size: 1200px;
+$screen_sm_size: 991px;
+$screen_xs_size: 768px;

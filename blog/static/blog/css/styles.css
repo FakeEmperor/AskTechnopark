@@ -1,0 +1,32 @@
+/* move special fonts to HTML head for better performance */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700');
+
+
+
+
+
+.column {
+    height: 100%;
+    overflow: auto;
+    *zoom:1;
+}
+
+
+
+
+.divider {
+}
+
+#main {
+    background-color:#fefefe;
+}
+#main .img-circle {
+  height:70px;
+  width:70px;
+}
+
+
+
+
+
+

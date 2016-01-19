@@ -1,0 +1,54 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/vendor/bootstrap.min.css' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Mah blog</title>
+
+    {% block styles %}
+
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/layout.css' %}" />
+    <script src="{% static "common/js/vendor/modernizr-2.6.2.js" %}"></script>
+    <!--[if lt IE 9]>
+        <script src="{% static "common/js/vendor/html5.js" %}"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="wrapper">
+    <!-- sidebar -->
+    <div class="column col-sm-3 sidebar navbar navbar-left" >
+        <ul class="nav">
+            <li class="active"><a href="#featured">Featured</a>
+            </li>
+            <li><a href="#stories">Stories</a>
+            </li>
+        </ul>
+        <ul class="nav hidden-xs" id="sidebar-footer">
+            <li>
+              <a href="http://www.bootply.com"><h3>Basis</h3>Made with <i class="glyphicon glyphicon-heart-empty"></i> by Bootply</a>
+            </li>
+        </ul>
+    </div>
+<!-- /sidebar -->
+
+    <div class="container-fluid">
+{% block content %}{% endblock %}
+
+    </div>
+</div>
+
+
+    <script src="{% static 'common/js/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'common/js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'common/js/vendor/respond.min.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

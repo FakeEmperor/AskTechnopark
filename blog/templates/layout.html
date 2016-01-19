@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>AskTechnopark - {{ title }}</title>
+
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&amp;subset=latin,cyrillic"
+            rel="stylesheet" type="text/css">
+
+
+    <link href="{% static "blog/css/screen.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="{% static "blog/css/print.css" %}" media="print" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+      <link href="{% static "blog/css/ie.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <script src="{% static "common/js/modernizr.js" %}"></script>
+    <link href="{% static "blog/css/layout.css" %}" rel="stylesheet">
+    {% block styles %} {% endblock %}
+</head>
+<body>
+    <!-- top navbar -->
+    <div class="navbar navbar-default navbar-fixed-top top-navbar" role="navigation">
+        <div class="left_side header-left header-generic">
+            <div class="navbar-header text-center">
+                {% if not page_settings.sidebar_disabled %}
+                   <button class="navbar navbar-toggle btn"
+                           type="button" data-target=".sidebar-nav" data-toggle="offcanvas">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                   </button>
+                {% endif %}
+               <a id="site-name" class="robotic header-title middle-block" href="{% url 'home' %}">AskTechnopark</a>
+            </div>
+        </div>
+        <div class="right_side header-right header-generic text-fluid-md">
+            <div id="title-container"
+                 class="center-block col-md-8 col-lg-push-0 col-sm-9 col-xs-9 col-xxs-reset">
+                <span id="page-title" class="text-empathize middle-block ellipsize">
+                    {% if page_title %} {{ page_title }}
+                    {% else %}
+                    {{ title }}
+                    {% endif %}
+                </span>
+            </div>
+            <span class="nav-divider"></span>
+            <div id="badges-container"
+                 class="text-light middle-block center-block hidden-xxs">
+                <div id="badge__comments" class="middle-block">
+                    <span class="glyphicon-comment glyphicon visible-xs-inline visible-sm-inline"></span>
+                    <span class="badge hand">255</span>
+                    <span class="hidden-sm hidden-xs"> Комментариев </span>
+                </div>
+                <div id="badge__rating" class="middle-block">
+                    <span class="glyphicon-thumbs-up glyphicon visible-xs-inline visible-sm-inline"></span>
+                    <span class="badge hand">255</span>
+                    <span class="hidden-sm hidden-xs"> Комментариев </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- page-block -->
+    <div class="page-content">
+        {% if not page_settings.sidebar_disabled %}
+        <!-- SIDEBAR -->
+        <div id="sidebar" class="left_side sidebar-offcanvas" role="navigation">
+            <div class="sidebar_user nav">
+                <div class="nav sidebar_userblock">
+                    <div class="sidebar_userpic center-block">
+                        <img src="http://loremflickr.com/300/300/anime,art,cartoon,oregairu"
+                         class="sidebar_userpic_img" alt="userpic">
+                    </div>
+                    <div class="sidebar_userinfo text-center container-fluid ellipsize">
+                        <span class="h3 sidebar_username center-block ellipsize">
+                            Hello, <span class="hand text-empathize">{% if user.is_authenticated %}@{{ user.username }}
+                            {% else %}@anon{% endif %}</span>!
+                        </span>
+
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="sidebar_user-stats">
+
+                    <div class="spaced-5 center-block text-center" role="group" aria-label="...">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <span>
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                        Rating
+                                        <span class="badge">14</span>
+                                    </span>
+
+                                    <span href="#" class="">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        Posts
+                                        <span class="badge">14</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <a href="#" class="">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        Messages
+                                        <span class="badge">14</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                    </div>
+                </div>
+                {% endif %}
+                <div class="sidebar_user-settings">
+
+                    {% if user.is_authenticated %}
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <a href="#" class="btn btn-group no-link_light  btn-primary">
+                                <span class="glyphicon glyphicon-wrench"></span>
+                                Settings
+                            </a>
+
+                            <a href="{% url 'logout' %}" class="no-link_light btn btn-group btn-info">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                Log out
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="btn-group-vertical spaced-5 center-block" role="group" aria-label="...">
+                            <a href="{% url 'login' %}" class=" btn btn-group no-link_light  btn-info">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                Log in
+                            </a>
+                            <a href="{% url 'register' %}" class="btn btn-group no-link_light btn-primary ">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Register
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!--\END:SIDEBAR.USERPANEL-->
+            <!-- SIDEBAR.TABS  -->
+            <div class="sidebar_tabs center-block  container-fluid">
+                <span class="h3 text-empathize-small center-block text-center sidebar_block-header">
+                    Tabs
+
+                </span>
+                <div class="sidebar_tabs_predefined text-empathize-small list-inline list-group container-fluid center-block">
+                    <a href="#" class="h5 list-group-item">
+                        Hot
+                    </a>
+                    <a href="#" class="h5 list-group-item">
+                        Best
+                    </a>
+                    <a href="#" class="h5 list-group-item">
+                        Trending
+                    </a>
+                    <a href="#" class="h5 list-group-item">
+                        My feed
+                        <span id="feed_counter" class="badge tabs_badge_counter ">
+                            20
+                        </span>
+                    </a>
+
+                </div>
+
+                <div class="sidebar_tabs">
+                    <span class="h4 text-empathize-small center-block text-center">
+                        Saved tabs
+                        <span class="small hand glyphicon glyphicon-question-sign js_explanation-tooltip"
+                          data-toggle="tooltip" data-placement="top"
+                          title="You can save tabs here to reading list via 'Save' button">
+                        </span>
+                    </span>
+                    <div class="sidebar_tabs_saved text-empathize-small list-inline list-group container-fluid center-block">
+                        <a href="#" class="list-group-item tabs_saved_item">
+                            Hot dasdasdsadasdasdsadassasaasasdsadasdasdaasdsal;djasjdas;djasldjsakldj lkas sk
+                            ' las; dja;lsj da;lj
+                        </a>
+                        <a href="#" class="list-group-item">
+                            Best
+                        </a>
+                        <a href="#" class="list-group-item">
+                            Trending
+                        </a>
+                        <a href="#" class="list-group-item">
+                            My feed
+                            <span id="feed_counter" class="badge tabs_badge_counter ">
+                                20
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- \END: SIDEBAR.TABS  -->
+            <!-- SIDEBAR.POPULAR_TAGS -->
+            <div class="sidebar_popular_tags">
+
+            </div>
+            <!-- \END: SIDEBAR.POPULAR_TAGS -->
+        </div>
+        {% endif %}
+        <!-- content block -->
+        <div class="{% if not page_settings.sidebar_disabled %}wrapper-main right_side{% else %}{% endif %}">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+
+
+
+    {% block scripts %} {% endblock %}
+    <script src="{% static 'common/js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'common/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'common/js/html5shiv.js' %}"></script>
+    <!--scripts-->
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle=offcanvas]').click(function (callee) {
+                $('.page-content .sidebar-offcanvas').toggleClass('sidebar-activated');
+            });
+            $('.js_explanation-tooltip').tooltip();
+        });
+    </script>
+    <!--end-scripts-->
+</body>
+
+</html>

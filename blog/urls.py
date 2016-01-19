@@ -1,26 +1,20 @@
 from datetime import datetime
 from django.conf.urls import patterns, url
 from blog.forms import BootstrapAuthenticationForm
+import blog.views
+import django.contrib.auth.views
 
-urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
-    url(r'^$', 'blog.views.home', name='home'),
-    url(r'^login/$',
-        'django.contrib.auth.views.login',
-        {
-            'template_name': 'blog/login.html',
-            'authentication_form': BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title':'Log in',
-                'year':datetime.now().year,
-            }
-        },
-        name='login'),
+    url(r'^$', blog.views.home, name='home'),
+    url(r'^register/$', blog.views.register,
+        name='register'),
+    url(r'^login/$', blog.views.login, name='login'),
     url(r'^logout$',
         'django.contrib.auth.views.logout',
         {
-            'next_page': '/',
+            'next_page': 'home',
         },
         name='logout'),
- )
+    url(r'^forgot/$', blog.views.forgot, name='forgot_password')
+]
